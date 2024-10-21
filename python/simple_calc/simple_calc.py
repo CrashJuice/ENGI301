@@ -45,6 +45,7 @@ Error conditions:
 # NOTE - Add import statements to allow access to Python library functions
 # NOTE - Hint: Look at https://docs.python.org/3/library/operator.html
 import operator
+import sys
 # ------------------------------------------------------------------------
 # Constants
 # ------------------------------------------------------------------------
@@ -55,24 +56,38 @@ import operator
 # NOTE - Global variable to map an operator string (e.g. "+") to
 # NOTE - the appropriate function.
 operators = {
-# Dictionary syntax: "key" : "value"
-# i.e. "function" : operator.<function>
     "+" : operator.add,
     "-" : operator.sub,
     "*" : operator.mul,
-    "/" : operator.truediv
+    "/" : operator.truediv,
+    ">>" : operator.rshift,  # Right shift
+    "<<" : operator.lshift,  # Left shift
+    "%"  : operator.mod,     # Modulo
+    "**" : operator.pow      # Exponentiation
 }
 # ------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------
+# Check for Python version compatibility
+if sys.version_info[0] < 3:
+    input = raw_input  # Python 2 uses raw_input for string input
+
 def get_user_input():
 # NOTE - Use "try"/"except" statements to allow code to handle errorsgracefully.
     try:
 # NOTE - Use "pass" statements to allow code to be run without having to
 # NOTE - fill out the contents. This pass statement should be removed
-        number1 = float(input("Input first number: "))
-        number2 = float(input("Input second number: "))
-        function = input("Input function (+, -, *, /): ")
+        number1 = input("Input first number: ")
+        number2 = input("Input second number: ")
+        function = input("Input function (+, -, *, /, >>, <<, %, **): ")
+        if function in [">>", "<<"]:
+            number1 = int(number1)
+            number2 = int(number2)
+        else:
+            # For other operations, convert to float
+            number1 = float(number1)
+            number2 = float(number2)
+        
         func = operators[function]
         return (number1, number2, func)
 # NOTE - User input is generally returned as a string and must be translated.
@@ -105,3 +120,4 @@ if __name__ == "__main__":
             print("Invalid Input")
             break
         print(func(number1, number2))
+        break
