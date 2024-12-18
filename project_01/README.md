@@ -98,3 +98,5 @@ The Smart Water Bottle project is designed to help users track their water intak
 
 This project was built by Juan Aizprua as part of an ENGI 301 assignment to explore embedded systems.
 
+Hackster Link! 
+https://www.hackster.io/juanaizprua89/smart-water-bottle-a7e579 
