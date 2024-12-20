@@ -59,3 +59,10 @@ Board Layout:
 The PCB layout is designed for compactness and minimal signal interference.
 
 Includes clear labels for pin headers and component placement.
+
+
+
+Acknowledgements:
+
+I used Groove Water Sensor base PCB design to create mine link to their website here: https://wiki.seeedstudio.com/Grove-Water_Sensor/
+
